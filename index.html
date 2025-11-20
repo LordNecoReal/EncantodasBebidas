@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Encanto das bebidas 🍹</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+<header>
+    <h1>🍹 Encanto das bebidas</h1>
+</header>
+
+<nav>
+    <button onclick="filtrarBebidas('todas')">Todas</button>
+    <button onclick="filtrarBebidas('doce')">Doces</button>
+    <button onclick="filtrarBebidas('citrica')">Cítricas</button>
+    <button onclick="filtrarBebidas('cremosa')">Cremosas</button>
+    <button onclick="filtrarBebidas('refrescante')">Refrescantes</button>
+    <button onclick="filtrarBebidas('salgada')">Salgadas</button>
+    <button id="musicToggleButton" onclick="toggleMusic()">Tocar Música</button>
+</nav>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Pesquisar bebida...">
+    <button onclick="pesquisarBebidas()">Pesquisar</button>
+</div>
+
+<main class="container" id="drinkContainer">
+    </main>
+
+<div id="modal">
+    <div id="modalContent">
+        <button id="modalCloseBtn" onclick="fecharModal()">Fechar</button>
+    </div>
+</div>
+
+<div class="music-player">
+     <audio controls autoplay loop preload="none">
+        <source src="assets/musicas/castlevania_2_simons_quest_musica_titulo.MP3"audio/MP3">
+        <source src="music/Sunshine.ogg" type="audio/ogg">
+        <source src="music/Sunshine.wav" type="audio/wav">
+    </audio>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+@charset "UTF-8";
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #1a1a2e; /* Azul escuro */
+  color: #f0f0f0; /* Texto claro */
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #0e0e1a; /* Azul muito escuro */
+  color: #e0b0ff; /* Tom de roxo claro/lilás */
+  padding: 1.5rem 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  background-color: #2a2a4a; /* Azul médio escuro */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid #4a4a7a;
+}
+
+nav button {
+  background-color: #4a4a7a; /* Azul mais claro para os botões */
+  color: #f0f0f0;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+nav button:hover {
+  background-color: #6a6ab0; /* Tom mais claro no hover */
+  transform: translateY(-2px);
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  background-color: #1a1a2e; /* Fundo principal */
+  gap: 10px;
+}
+
+.search-container input {
+  width: 60%;
+  max-width: 400px;
+  padding: 0.8rem;
+  border: 1px solid #4a4a7a;
+  border-radius: 5px;
+  background-color: #2a2a4a;
+  color: #f0f0f0;
+  font-size: 1rem;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.search-container input::-moz-placeholder {
+  color: #a0a0c0;
+}
+
+.search-container input::placeholder {
+  color: #a0a0c0;
+}
+
+.search-container button {
+  background-color: #8a2be2; /* Azul violeta vibrante */
+  color: #f0f0f0;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.search-container button:hover {
+  background-color: #7a1ee0; /* Tom mais escuro no hover */
+  transform: translateY(-2px);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
+  align-items: start;
+  flex-grow: 1;
+}
+
+.drink {
+  background-color: #2a2a4a;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem; /* Espaço para a descrição */
+}
+
+.drink:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.drink img {
+  width: 100%;
+  height: 200px; /* Altura fixa para imagens */
+  -o-object-fit: contain;
+     object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
+  background-color: #1a1a2e; /* Fundo escuro para a área da imagem */
+  padding: 10px;
+  border-bottom: 1px solid #4a4a7a;
+}
+
+.drink-info {
+  padding: 1rem;
+  text-align: center;
+  flex-grow: 1; /* Permite que a informação ocupe o espaço restante */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Espaço entre título e descrição */
+}
+
+.drink-info h3 {
+  margin-top: 0;
+  color: #e0b0ff;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.drink-info p {
+  font-size: 0.9rem;
+  color: #ccc;
+  flex-grow: 1; /* Permite que a descrição ocupe o espaço */
+}
+
+/* Modal */
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s;
+}
+
+#modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+#modalContent {
+  background-color: #2a2a4a;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh; /* Limita a altura do modal */
+  overflow-y: auto; /* Adiciona scroll se o conteúdo for muito grande */
+  position: relative; /* Para posicionar o botão de fechar */
+  color: #f0f0f0;
+}
+
+#modalContent img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#modalContent h2 {
+  color: #e0b0ff;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+#modalContent h3 {
+  color: #e0b0ff;
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#modalContent ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#modalContent ul li {
+  background-color: #3a3a5a;
+  margin-bottom: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+#modalContent p {
+  font-size: 1rem;
+  color: #ccc;
+  text-align: justify;
+}
+
+#modalCloseBtn {
+  background-color: #dc3545; /* Vermelho */
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  position: absolute; /* Posiciona o botão de fechar */
+  top: 10px;
+  right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#modalCloseBtn:hover {
+  background-color: #c82333;
+}
+
+/* Estilos para o player de áudio invisível */
+.music-player {
+  position: absolute; /* Posiciona fora da tela ou em um canto minúsculo */
+  width: 1px;
+  height: 1px;
+  opacity: 0; /* Torna completamente transparente */
+  overflow: hidden; /* Garante que nada transborde do elemento minúsculo */
+  pointer-events: none; /* Impede que o usuário interaja com ele */
+}
+
+/* Estilo para o novo botão de música */
+#musicToggleButton {
+  margin-left: 1rem; /* Dá um espaço entre os botões de filtro */
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  border: 1.5px solid #6c757d; /* Cor neutra para o botão de música */
+  background: transparent;
+  color: #6c757d;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#musicToggleButton.playing {
+  border-color: #28a745; /* Verde quando tocando */
+  color: #28a745;
+}
+
+#musicToggleButton:hover {
+  background: #6c757d;
+  color: #1a1a2e;
+}/*# sourceMappingURL=style.css.map */
